@@ -7,7 +7,7 @@ public class Cake extends Snack {
 	
 	@Override
 	public double getDeliveryTime() {
-		return calculateDeliveryTimePerDistance() + cookTime;
+		return (super.getDeliveryTime() + cookTime);
 	}
 
 	public String getFlavor() {

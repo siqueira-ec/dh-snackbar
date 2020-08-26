@@ -26,7 +26,7 @@ public class Dough extends Snack {
 	
 	@Override
 	public double getDeliveryTime() {
-		return calculateDeliveryTimePerDistance() + cookTime;
+		return (super.getDeliveryTime() + cookTime);
 	}
 
 }

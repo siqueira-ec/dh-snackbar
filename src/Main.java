@@ -39,6 +39,7 @@ public class Main {
 		sandwich.setName("sandwich");
 		sandwich.setPrice(15.5);
 		sandwich.setDistance(distance);
+		sandwich.setDeliveryPrice(distance);
 		sandwich.setIngredients(choosenIngredients);
 		
 		return sandwich;
@@ -84,6 +85,7 @@ public class Main {
 		
 		dough.setPrice(28.35);
 		dough.setDistance(distance);
+		dough.setDeliveryPrice(distance);
 		dough.setIngredients(choosenIngredients);
 		
 		return dough;
@@ -109,6 +111,7 @@ public class Main {
 		cake.setFilling(filling);
 		cake.setTopping(topping);
 		cake.setDistance(distance);
+		cake.setDeliveryPrice(distance);
 		
 		return cake;
 	}
@@ -118,7 +121,6 @@ public class Main {
 		double distance = scanner.nextDouble();
 		return distance;
 	}
-
 
 	public static List<String> ingredientsMenu(int limit, Snack snack) {
 		System.out.println("Enter the list of ingredients of your " + snack.getName() +
@@ -140,6 +142,13 @@ public class Main {
 	}
 	
 	public static void printOrderInfo(Snack snack) {	
+		if (snack instanceof Sandwich) {
+			snack = (Sandwich) snack;
+		} else if (snack instanceof Dough) {
+			snack = (Dough) snack;
+		} else {
+			snack = (Cake) snack;
+		}
 		System.out.println("-> Your order:");
 		System.out.println("-- " + snack.getName() + "\n");
 		System.out.println("-> Values:");
@@ -156,7 +165,7 @@ public class Main {
 		
 		if (!(snack instanceof Cake)) {
 			System.out.println("-> Choosen ingredients:");
-			snack.getIngredients().forEach(printConsumer);
+			((Sandwich) snack).getIngredients().forEach(printConsumer);
 		} else {
 			System.out.println("-> Choosen flavor:");
 			System.out.println("-- " + ((Cake) snack).getFlavor() + "\n");

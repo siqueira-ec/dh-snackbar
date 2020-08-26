@@ -7,7 +7,6 @@ public class Sandwich extends Snack {
 	private List<String> ingredients = new ArrayList<String>(10);
 	private Consumer<String> ingredientsConsumer = ingredient -> this.ingredients.add(ingredient);
 	
-	@Override
 	public List<String> getIngredients() {
 		return ingredients;
 	}
@@ -18,7 +17,7 @@ public class Sandwich extends Snack {
 	
 	@Override
 	public double getDeliveryTime() {
-		return calculateDeliveryTimePerDistance() + cookTime;
+		return (super.getDeliveryTime() + cookTime);
 	}
 	
 }
